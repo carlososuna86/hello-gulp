@@ -33,7 +33,7 @@ function gulpConnect(cb) {
   return connect.server(
     { root: "./"
 //    , livereload: true
-    , port: 80
+    , port: 8000
     }
   );
 }

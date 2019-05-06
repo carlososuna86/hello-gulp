@@ -15,4 +15,6 @@ COPY ./html /var/www/html
 
 RUN yarn install
 
+EXPOSE 8000
+
 CMD ["npm", "start"]

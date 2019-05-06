@@ -4,5 +4,7 @@ services:
 
   node:
     build: ./node
+    ports:
+     - 8000:8000
 
 
