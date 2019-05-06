@@ -4,6 +4,7 @@ services:
 
   node:
     build: ./node
+    image: carlososuna86/hello-gulp
     ports:
      - 8000:8000
 
