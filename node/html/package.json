@@ -1,0 +1,18 @@
+{
+  "name": "hello-gulp",
+  "version": "1.0.0",
+  "description": "sample Hello World, using Gulp and Yarn",
+  "license": "UNLICENSED",
+  "author": "carlososuna86@gmail.com",
+  "scripts": {
+    "start": "gulp build && gulp"
+  },
+  "main": "app.js",
+  "devDependencies": {
+    "gulp": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-connect": "^5.7.0",
+    "gulp-yarn": "^2.0.0"
+  }
+}
+
