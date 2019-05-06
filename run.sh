@@ -17,7 +17,8 @@ fi
 
 if $CLEAN; then
   echo "[Cleaning up docker images]"
-  docker system prune
+  docker rmi carlososuna86/hello-gulp
+  #docker system prune
   echo ""
 fi
 

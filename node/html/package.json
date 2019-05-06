@@ -4,10 +4,17 @@
   "description": "sample Hello World, using Gulp and Yarn",
   "license": "UNLICENSED",
   "author": "carlososuna86@gmail.com",
-  "scripts": {
-    "start": "gulp build && gulp"
+  "repository": {
+    "type": "git",
+    "url": "git://bitbucket.org/carlososuna86/hello-gulp"
   },
-  "main": "app.js",
+  "scripts": {
+    "start": "gulp build && node index.js"
+  },
+  "main": "index.js",
+  "dependencies": {
+    "express": "^4.16.4"
+  },
   "devDependencies": {
     "gulp": "^4.0.0",
     "gulp-clean": "^0.4.0",

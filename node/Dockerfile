@@ -8,10 +8,10 @@ RUN \
   apt-get install -y net-tools && \
   apt-get clean
 
-RUN mkdir -p /var/www/html
-WORKDIR /var/www/html
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
 
-COPY ./html /var/www/html
+COPY ./html /usr/src/app
 
 RUN yarn install
 

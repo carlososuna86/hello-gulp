@@ -31,9 +31,11 @@ gulp.task("compile", gulpCompile);
 // task: connect
 function gulpConnect(cb) {
   return connect.server(
-    { root: "./"
-//    , livereload: true
-    , port: 8000
+    {
+      root: "./",
+      livereload: true,
+      port: 8000,
+      fallback: "index.html"
     }
   );
 }
