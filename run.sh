@@ -25,6 +25,8 @@ if $CLEAN; then
   echo ""
 fi
 
+./generate-ssl.sh
+
 if $BUILD; then
   echo "[Building new docker images]"
   docker-compose build
