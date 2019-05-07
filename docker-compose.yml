@@ -4,8 +4,20 @@ services:
 
   node:
     build: ./node
-    image: carlososuna86/hello-gulp
+    image: carlososuna86/hello-gulp:node
+    expose:
+     - '8000'
+
+  proxy:
+    build: ./proxy
+    image: carlososuna86/hello-gulp:proxy
+    volumes:
+     - ./proxy/config/conf.d:/etc/nginx/conf.d
+     - ./proxy/config/ssl:/etc/ssl
     ports:
-     - 8000:8000
-
-
+     - '${HTTP_PORT}:80'
+     - '${HTTPS_PORT}:443'
+    links:
+     - node
+    depends_on:
+     - node

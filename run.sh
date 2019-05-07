@@ -7,7 +7,9 @@ CLEAN=true
 BUILD=true
 PORTS=true
 
-SERVICE=node
+if [ ! -f .env ]; then
+  cp env.example .env
+fi
 
 if $DOWN ; then
   echo "[Shutting down containers]"
@@ -17,7 +19,8 @@ fi
 
 if $CLEAN; then
   echo "[Cleaning up docker images]"
-  docker rmi carlososuna86/hello-gulp
+  docker rmi carlososuna86/hello-gulp:node
+  docker rmi carlososuna86/hello-gulp:proxy
   #docker system prune
   echo ""
 fi
@@ -34,11 +37,14 @@ echo ""
 
 if $PORTS; then
   sleep 10s
-  echo "[Showing open ports for service $SERVICE]"
-  docker-compose exec $SERVICE netstat -ntlp
+  echo "[Showing open ports for service proxy]"
+  docker-compose exec proxy netstat -ntlp
+  echo ""
+  echo "[Showing open ports for service node]"
+  docker-compose exec node netstat -ntlp
   echo ""
 fi
 
 echo "[Showing logs for containers]"
-docker-compose logs -f $SERVICE
+docker-compose logs -f proxy node
 
