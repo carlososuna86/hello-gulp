@@ -9,11 +9,8 @@ RUN \
   apt-get clean
 
 RUN mkdir -p /usr/src/app
+
 WORKDIR /usr/src/app
-
-COPY ./html /usr/src/app
-
-RUN yarn install
 
 EXPOSE 8000
 

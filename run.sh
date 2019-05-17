@@ -19,7 +19,7 @@ fi
 
 if $CLEAN; then
   echo "[Cleaning up docker images]"
-  docker rmi carlososuna86/hello-gulp:node
+  docker rmi carlososuna86/hello-gulp:app
   docker rmi carlososuna86/hello-gulp:proxy
   #docker system prune
   echo ""
@@ -29,24 +29,17 @@ fi
 
 if $BUILD; then
   echo "[Building new docker images]"
-  docker-compose build
+  docker-compose build app proxy
   echo ""
 fi
 
 echo "[Starting containers]"
-docker-compose up -d
+docker-compose up -d app proxy
 echo ""
 
 if $PORTS; then
   sleep 10s
-  echo "[Showing open ports for service proxy]"
-  docker-compose exec proxy netstat -ntlp
-  echo ""
-  echo "[Showing open ports for service node]"
-  docker-compose exec node netstat -ntlp
-  echo ""
+  ./ports.sh
 fi
 
-echo "[Showing logs for containers]"
-docker-compose logs -f proxy node
-
+./logs.sh

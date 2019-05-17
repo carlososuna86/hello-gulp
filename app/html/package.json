@@ -9,9 +9,9 @@
     "url": "git://bitbucket.org/carlososuna86/hello-gulp"
   },
   "scripts": {
-    "start": "gulp build && node app.js"
+    "start": "gulp build && gulp"
   },
-  "main": "index.js",
+  "main": "app.js",
   "dependencies": {
     "express": "^4.16.4"
   },

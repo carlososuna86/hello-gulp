@@ -1,10 +1,10 @@
 #!/bin/bash
 
-source .env
-
 SSL_PATH=./proxy/config/ssl
 
 if [ ! -f $SSL_PATH/fullchain.pem ] || [ ! -f $SSL_PATH/privkey.pem ]; then
+  source .env
+
   echo "[Generating default SSL certificate files for Nginx]"
 
   sudo mkdir -p $SSL_PATH
@@ -26,10 +26,11 @@ if [ ! -f $SSL_PATH/fullchain.pem ] || [ ! -f $SSL_PATH/privkey.pem ]; then
   fi
 
   echo ""
+
+  echo "[Fixing certificate permissions]"
+  #sudo chown root:root $SSL_PATH/*.pem
+  sudo chmod go+r $SSL_PATH/*.pem
+  echo ""
 fi
 
-echo "[Fixing certificate permissions]"
-#sudo chown root:root $SSL_PATH/*.pem
-sudo chmod go+r $SSL_PATH/*.pem
-echo ""
 

@@ -5,8 +5,17 @@ services:
   node:
     build: ./node
     image: carlososuna86/hello-gulp:node
+  nginx:
+    build: ./nginx
+    image: carlososuna86/hello-gulp:nginx
+
+  app:
+    build: ./app
+    image: carlososuna86/hello-gulp:app
     expose:
      - '8000'
+    networks:
+      carlososuna86.info:
 
   proxy:
     build: ./proxy
@@ -17,7 +26,11 @@ services:
     ports:
      - '${HTTP_PORT}:80'
      - '${HTTPS_PORT}:443'
-    links:
-     - node
     depends_on:
-     - node
+     - app
+    networks:
+      carlososuna86.info:
+
+networks:
+  carlososuna86.info:
+

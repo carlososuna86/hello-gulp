@@ -6,7 +6,6 @@ var clean = require("gulp-clean");
 var connect = require("gulp-connect");
 var yarn = require("gulp-yarn");
 
-
 // task: clean
 function gulpClean(cb) {
   return cb();
@@ -30,14 +29,14 @@ gulp.task("compile", gulpCompile);
 
 // task: connect
 function gulpConnect(cb) {
-  return connect.server(
-    {
-      root: "./",
-      livereload: true,
+  var options = {
+      host: [ "localhost" ],
       port: 8000,
-      fallback: "index.html"
-    }
-  );
+//      root: "./",
+      livereload: true,
+//      fallback: "index.html"
+  };
+  connect.server(options, cb);
 }
 gulp.task("connect", gulpConnect);
 
